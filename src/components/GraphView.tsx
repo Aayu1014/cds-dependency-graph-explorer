@@ -1,5 +1,6 @@
-import ForceGraph2D from "react-force-graph-2d";
+import ForceGraph2D, { type ForceGraphMethods } from "react-force-graph-2d";
 import type { GraphData, GraphNode } from "../types/graph";
+import { useEffect, useRef } from "react";
 
 interface GraphViewProps {
   graphData: GraphData;
@@ -11,9 +12,20 @@ function GraphView({
   onNodeClick,
   searchTerm = "",
 }: GraphViewProps) {
+  const fgRef = useRef<ForceGraphMethods<any, any>>(undefined);
   const term = searchTerm.trim().toUpperCase();
+  useEffect(() => {
+    // Give the simulation a moment to settle, then center it
+
+    const timer = setTimeout(() => {
+      fgRef.current?.zoomToFit(600, 60);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [graphData]);
   return (
     <ForceGraph2D
+      ref={fgRef}
       graphData={graphData}
       nodeLabel="id"
       onNodeClick={(node: any) => onNodeClick?.(node)}
