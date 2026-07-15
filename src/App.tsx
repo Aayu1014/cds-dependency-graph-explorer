@@ -24,6 +24,7 @@ function App() {
   return (
     <div className="app-container">
       <h2 className="app-title">CDS Dependency Graph Explorer</h2>
+      <p className="app-tagline">EXPLORE--LEARN--MASTER</p>
       <SearchBar value={searchTerm} onChange={setSearchTerm} />
       <Legend />
 
