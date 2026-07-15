@@ -22,7 +22,7 @@ function GraphView({
       }
       linkWidth={2}
       linkDirectionalArrowLength={6}
-      linkDirectionalArrowRelPos={1}
+      linkDirectionalArrowRelPos={0.92}
       nodeCanvasObject={(
         node: any,
         ctx: CanvasRenderingContext2D,

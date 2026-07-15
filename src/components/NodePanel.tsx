@@ -11,7 +11,13 @@ function NodePanel({ node, edges, onClose }: NodePanelProps) {
     <div className="node-panel">
       <div className="node-panel-header">
         <strong>{node.id}</strong>
-        <span className="node-panel-close" onClick={onClose}>
+        <span
+          className="node-panel-close"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
+        >
           X
         </span>
       </div>
