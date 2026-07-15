@@ -4,8 +4,14 @@ import type { GraphData, GraphNode } from "../types/graph";
 interface GraphViewProps {
   graphData: GraphData;
   onNodeClick?: (node: GraphNode) => void;
+  searchTerm?: string;
 }
-function GraphView({ graphData, onNodeClick }: GraphViewProps) {
+function GraphView({
+  graphData,
+  onNodeClick,
+  searchTerm = "",
+}: GraphViewProps) {
+  const term = searchTerm.trim().toUpperCase();
   return (
     <ForceGraph2D
       graphData={graphData}
@@ -22,9 +28,12 @@ function GraphView({ graphData, onNodeClick }: GraphViewProps) {
         ctx: CanvasRenderingContext2D,
         globalScale: number,
       ) => {
+        const isMatch = term.length > 0 && node.id.toUpperCase().includes(term);
+        const isDimmed = term.length > 0 && !isMatch;
         const fontSize = 12 / globalScale;
 
         ctx.font = `${fontSize}px Sans-Serif`;
+        ctx.globalAlpha = isDimmed ? 0.25 : 1;
         ctx.fillStyle = "#2a2f36";
         // Draw node
         ctx.beginPath();
@@ -32,14 +41,15 @@ function GraphView({ graphData, onNodeClick }: GraphViewProps) {
         ctx.fill();
 
         // Node border
-        ctx.strokeStyle = "#f0ab00";
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = isMatch ? "#4fd6a8" : "#f0ab00";
+        ctx.lineWidth = isMatch ? 2.5 : 1.5;
         ctx.stroke();
 
         // Node label
         ctx.fillStyle = "#eef0f2";
         ctx.textAlign = "center";
-        ctx.fillText(node.id, node.x, node.y - 12);
+        ctx.fillText(node.id, node.x, node.y - (isMatch ? 15 : 12));
+        ctx.globalAlpha = 1; // Reset alpha for other nodes
       }}
     />
   );

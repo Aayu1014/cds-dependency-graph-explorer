@@ -87,3 +87,45 @@ color: #ffa726;
 font-weight: bold;
 
 }
+.search-bar {
+
+position: absolute;
+
+top: 70px;
+
+left: 20px;
+
+width: 220px;
+
+padding: 8px 12px;
+
+background: #20242a;
+
+border: 1px solid #2c3138;
+
+border-radius: 8px;
+
+color: #eef0f2;
+
+font-family: monospace;
+
+font-size: 13px;
+
+outline: none;
+
+z-index: 10;
+
+}
+
+
+.search-bar::placeholder {
+
+color: #6b7280;
+
+}
+
+.search-bar:focus {
+
+border-color: #f0ab00;
+
+}
