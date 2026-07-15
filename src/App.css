@@ -129,3 +129,79 @@ color: #6b7280;
 border-color: #f0ab00;
 
 }
+.legend {
+
+position: absolute;
+
+bottom: 20px;
+
+left: 20px;
+
+background: #20242a;
+
+border: 1px solid #2c3138;
+
+border-radius: 10px;
+
+padding: 12px 16px;
+
+color: #eef0f2;
+
+font-family: monospace;
+
+font-size: 13px;
+
+z-index: 10;
+
+}
+
+.legend-title {
+
+color: #8b92a0;
+
+
+
+font-size: 11px;
+
+letter-spacing: 1px;
+
+text-transform: uppercase;
+
+margin-bottom: 8px;
+}
+
+.legend-row {
+
+display: flex;
+
+align-items: center;
+
+gap: 8px;
+
+margin-top: 4px;
+
+}
+
+.legend-swatch {
+
+
+
+width: 20px;
+
+height: 3px;
+
+display: inline-block;
+
+border-radius: 2px;
+}
+
+.legend-consumes {
+
+background: #4fc3f7;
+}
+
+.legend-association {
+
+background: #ffa726;
+
+}

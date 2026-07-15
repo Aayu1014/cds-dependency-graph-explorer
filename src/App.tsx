@@ -2,6 +2,7 @@ import { useState } from "react";
 import GraphView from "./components/GraphView";
 import NodePanel from "./components/NodePanel";
 import SearchBar from "./components/SearchBar";
+import Legend from "./components/Legend";
 import { mockEdges } from "./data/mockEdges";
 import { buildGraphData } from "./utils/buildGraphData";
 import type { GraphData, GraphNode } from "./types/graph";
@@ -24,6 +25,7 @@ function App() {
     <div className="app-container">
       <h2 className="app-title">CDS Dependency Graph Explorer</h2>
       <SearchBar value={searchTerm} onChange={setSearchTerm} />
+      <Legend />
 
       <GraphView
         graphData={graphData}
